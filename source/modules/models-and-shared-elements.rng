@@ -260,6 +260,7 @@
     <define name="element.list">
         <element name="list">
             <ref name="attribute-group.global-plus-lang-and-script-and-localType.optional"/>
+            <ref name="attribute-group.lists.optional"/>
             <oneOrMore>
                 <ref name="element.item"/>
             </oneOrMore>

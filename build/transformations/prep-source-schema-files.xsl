@@ -10,17 +10,10 @@
     <xsl:mode on-no-match="shallow-copy"/>
     <xsl:param name="schema" select="'eac'"/>
 
-    <xsl:variable name="module-xml-files"
-        select=" for $file in collection('../source/modules?metadata=yes')
-        return
-        if ($file?content-type = 'application/xml') then
-        $file?fetch()
-        else
-        ()"
-        as="item()*"/>
+    <xsl:variable name="module-xml-files" select="collection('../../source/modules?select=*.rng')" as="document-node()*"/>
     
-    <xsl:variable name="source-file" select="if ($schema eq 'eac') then document('../source/eac-source.rng')
-        else if ($schema eq 'ead') then document('../source/ead-source.rng')
+    <xsl:variable name="source-file" select="if ($schema eq 'eac') then document('../../source/eac-source.rng')
+        else if ($schema eq 'ead') then document('../../source/ead-source.rng')
         else null"/>
     
     <xsl:template name="xsl:initial-template">

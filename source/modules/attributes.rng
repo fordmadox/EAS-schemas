@@ -303,11 +303,53 @@
         </interleave>
     </define>
     
-    <define name="attribute-group.lists.optional" a:exclude-from="eac">
-        <!-- EAD3 has numeration and mark.  CSS just has list-style-type. -->
+    <define name="attribute-group.lists.optional">
+        <optional>
+            <attribute name="listType">
+                <choice>
+                    <value>deflist</value>
+                    <value>ordered</value>
+                    <value>unordered</value>
+                </choice>
+            </attribute>
+        </optional>
+        <optional>
+            <attribute name="mark">
+                <choice>
+                    <value>circle</value> 
+                    <value>disc</value>
+                    <value>inherit</value>
+                    <value>none</value>
+                    <value>square</value>
+                </choice>
+            </attribute>  
+        </optional>
+        <optional>
+            <attribute name="numeration">
+                <!-- seems like it would be better to combine, especially since values like lower-alpha are not "numeration"s -->
+                <choice>
+                    <value>decimal</value>
+                    <value>decimal-leading-zero</value>
+                    <value>lower-roman</value>
+                    <value>upper-roman</value>
+                    <value>lower-greek</value>
+                    <value>lower-latin</value>
+                    <value>upper-latin</value>
+                    <value>armenian</value>
+                    <value>georgian</value>
+                    <value>lower-alpha</value>
+                    <value>upper-alpha</value>
+                    <value>inherit</value>
+                </choice>
+            </attribute>
+        </optional>
+    </define>
+    
+    <define name="attribute.listStyle.optional" a:exclude-from="eac ead">
+        <!-- EAD3 has numeration and mark and listtype.  CSS just has list-style-type. -->
         <optional>
             <attribute name="listStyle">
-                <!-- why is this in the EAD3 schema, rather than in the schematron? -->
+                <!-- seems like it would be better to combine, especially since values like lower-alpha are not "numeration"s -->
                 <choice>
                     <value a:documentation="Default value. The marker is a filled circle">disc</value>
                     <value a:documentation="The marker is traditional Armenian numbering">armenian</value>
@@ -336,26 +378,6 @@
                 </choice>
             </attribute>
         </optional>
-        <!-- 
-           use listStype instead???   you can't have both square and upper-alpha, right? 
-        <attribute name="mark">
-            <choice>
-                <value>circle</value> 
-                <value>disc</value>
-                <value>inherit</value>
-                <value>none</value>
-                <value>square</value>
-            </choice>
-        </attribute>
-        -->
-        <!-- use HTML names, or something else? -->
-        <attribute name="listType">
-            <choice>
-                <value>deflist</value>
-                <value>ordered</value>
-                <value>unordered</value>
-            </choice>
-        </attribute>
     </define>
   
     <define name="attribute-group.relation-children.optional">

@@ -29,8 +29,8 @@
   *****************************************************************
   
 -->
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
-           xmlns:eac="http://www.archivists.org/ns/v2/eac"
+<xs:schema xmlns:eac="http://www.archivists.org/ns/v2/eac"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema"
            elementFormDefault="qualified"
            targetNamespace="http://www.archivists.org/ns/v2/eac">
    <xs:element name="eac">
@@ -1830,6 +1830,44 @@
       </xs:attribute>
       <xs:attribute name="scriptOfElement" type="xs:token"/>
       <xs:attribute name="localType" type="xs:anyURI"/>
+      <xs:attribute name="listType">
+         <xs:simpleType>
+            <xs:restriction base="xs:token">
+               <xs:enumeration value="deflist"/>
+               <xs:enumeration value="ordered"/>
+               <xs:enumeration value="unordered"/>
+            </xs:restriction>
+         </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="mark">
+         <xs:simpleType>
+            <xs:restriction base="xs:token">
+               <xs:enumeration value="circle"/>
+               <xs:enumeration value="disc"/>
+               <xs:enumeration value="inherit"/>
+               <xs:enumeration value="none"/>
+               <xs:enumeration value="square"/>
+            </xs:restriction>
+         </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="numeration">
+         <xs:simpleType>
+            <xs:restriction base="xs:token">
+               <xs:enumeration value="decimal"/>
+               <xs:enumeration value="decimal-leading-zero"/>
+               <xs:enumeration value="lower-roman"/>
+               <xs:enumeration value="upper-roman"/>
+               <xs:enumeration value="lower-greek"/>
+               <xs:enumeration value="lower-latin"/>
+               <xs:enumeration value="upper-latin"/>
+               <xs:enumeration value="armenian"/>
+               <xs:enumeration value="georgian"/>
+               <xs:enumeration value="lower-alpha"/>
+               <xs:enumeration value="upper-alpha"/>
+               <xs:enumeration value="inherit"/>
+            </xs:restriction>
+         </xs:simpleType>
+      </xs:attribute>
       <xs:anyAttribute namespace="##other" processContents="lax"/>
    </xs:complexType>
    <xs:complexType name="outline">
